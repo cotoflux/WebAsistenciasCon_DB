@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    font-family: 'Exo 2', sans-serif;
+}
+header{
+    height: 13%;
+    background-color: #E36E02;
+    border-bottom:1px solid white;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo{
+    width:2.5rem;
+    height:2.5rem;
+    border-radius: 50%;
+    background-image:url("../assets/images/SpicyBannana.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left:5%;
+}
+.navbar{
+    width:50%;
+    margin-left:40%;
+    margin-right: 0;
+}
+ul{
+    list-style-type: none;
+    display:flex;
+    justify-content:space-around;
+}
+ul > li > a{
+    text-decoration: none;  
+    font-size:1.1rem;
+    color:black;
+}
+main{
+    height: 75%;
+    background-color: #FFFDFD;
+    border-bottom:1px solid white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    border:1px solid black;
+    width:30%;
+    height:70%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    overflow:hidden;
+}
+h1{
+    text-align: center;
+    margin-top:5%;
+}
+.txt{
+    border-bottom:1px solid#c7ecee;
+    width: 80%;
+    margin-top:13%;
+    margin-left:10%;
+
+}
+.txt input{
+    text-decoration: none;
+    background: none;
+    border:none;
+    width:100%;
+    outline:none;
+    color:#535c68;
+    font-size:1rem;
+    padding-top:2%;
+    
+}
+.login{
+    padding:1.2rem;
+    border: none;
+    outline:none;
+    cursor: pointer;
+    width:80%;
+    margin-top:15%;
+    margin-left:10%;
+    border-radius: 5.2rem;
+    font-family: 'Exo 2', sans-serif;
+    background-image: linear-gradient(120deg,#dff9fb,#c7ecee,#95afc0)
+}
+.t1::before{
+    content:'Username';
+    display:block;
+    margin-bottom: 2%;
+}
+.t2::before{
+    content:'Password';
+    display:block;
+    margin-bottom: 2%;
+}
+
+footer{
+    height:12%;
+    background-color: #273443;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-info  span{
+    font-weight: 1000;
+}
+
+@media(max-width:450px){
+    .form{
+        width:250px;
+    }
+    .login{
+        padding:0.6rem;
+        margin-top:20%;
+    }
+    h1{
+        font-size:1.7rem;
+        margin-top:3vh;
+    }
+    .txt{
+        margin-top:17%;
+    }
+    .t1::before{
+        content: 'Username';
+        font-size:0.9rem;
+    }
+    .t2::before{
+        content: 'Password';
+        font-size:0.9rem;
+    }
+}
