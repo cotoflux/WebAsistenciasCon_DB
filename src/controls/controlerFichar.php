@@ -104,8 +104,11 @@ function actualizarTotalRetrasos($conn, $idUsuario, $totalRetrasos)
     function actualizarTotalFaltas($conn, $idUsuario, $resultado)
     {
         $insertarTotalFaltas="UPDATE users SET total_faltas= $resultado WHERE id=$idUsuario";
+        
         $variable= mysqli_query($conn, $insertarTotalFaltas);
-        echo "Para FALTAS.". $variable."esto son las faltas--" . $insertarTotalFaltas.PHP_EOL;
+
+        echo "Para FALTAS.". $variable."esto son las faltas--" . $insertarTotalFaltas."<br/>";
+
     }
 
     function alertaRevisionFaltas($resultado)
