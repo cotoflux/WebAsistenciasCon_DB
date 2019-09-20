@@ -51,7 +51,7 @@
             echo "<tr>";
             echo "<td>".$value['name']."</td>";
             echo "<td>".$value['date']."</td>";
-            echo "<td>".$value['time']."</td>";             
+            echo "<td>".$value['time']."</td>";           
             echo "</tr>";
            }
         //    while ($fila = mysqli_fetch_array($result)) {

@@ -29,18 +29,20 @@ session_start();
         </nav>
     </header>
     <main>
-       <table>
+       <table border=1>
            <tr>
             <th>Nombre</td>
             <th>Dia</td> 
             <th>Hora</td>
+            <th>Justificar</td>
            </tr>
            <?php 
            foreach ($_SESSION["historial"] as $value) {
             echo "<tr>";
             echo "<td>".$value['name']."</td>";
             echo "<td>".$value['date']."</td>";
-            echo "<td>".$value['time']."</td>";             
+            echo "<td>".$value['time']."</td>";   
+            echo "<td><input type='file' name='myFile'></td>";            
             echo "</tr>";
            }
         //    while ($fila = mysqli_fetch_array($result)) {
