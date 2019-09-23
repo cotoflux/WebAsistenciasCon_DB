@@ -34,7 +34,7 @@
     <div class="container">
   <ul class="nav nav-pills">
     <li class="active"><a data-toggle="pill" href="#menu1">Listado de Today</a></li>
-    <li><a data-toggle="pill" href="#menu2">Listado Retrasos Totales</a></li>
+    <li><a data-toggle="pill" href="#totalretrasos">Listado Retrasos Totales</a></li>
   </ul>
   
   <div class="tab-content">
@@ -62,9 +62,30 @@
 
 
     </div>
-    <div id="menu2" class="tab-pane fade">
+    <div id="totalretrasos" class="tab-pane fade">
       <h3>Listado Retrasos totales</h3>
-      
+      <table border=1>
+           <tr>
+            <th>Nombre</td>
+            <th>Apellido</td> 
+            <th>Total Faltas</td>
+            <th>Total Retrasos</th>
+           </tr>
+           <?php 
+           foreach ($_SESSION["historialTotalesUsuarios"] as $value2) {
+            echo "<tr>";
+            echo "<td>".$value2['name']."</td>";
+            echo "<td>".$value2['last_name']."</td>";
+            echo "<td>".$value2['total_faltas']."</td>";        
+            echo "<td>".$value2['total_retrasos']."</td>";    
+            echo "</tr>";
+           }
+        //    while ($fila = mysqli_fetch_array($result)) {
+        //     echo "<td>".$fila['id']."</td>";
+        // }
+    ?>
+       </table>
+  
   </div>
 </div>
 
