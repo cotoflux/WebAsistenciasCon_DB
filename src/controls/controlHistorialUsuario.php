@@ -9,7 +9,7 @@ $idUser = $_SESSION['identi'];
 function mostrarHistorialUsuario($con,$idUser)
 {  
     $redirectUrl = '../views/viewPersonalUserHistory.php';
-    $sql = "SELECT u.id, u.name, a.date, a.time 
+    $sql = "SELECT u.id, u.name, a.date, a.time, a.proof
     FROM users u join attendance a on(u.id = a.id_user)
     WHERE u.id = $idUser";
     $historial = [];

@@ -44,12 +44,14 @@ session_start();
             <td><?php echo $value['date'] ?></td>
             <td><?php echo $value['time'] ?></td>   
                 <td>
+                    <?php if (!isset($value['proof'])): ?>
                     <form action="../upload.php" method="post" enctype="multipart/form-data">
                     Justifica tu falta:
                     <input type='hidden' name='date' value='<?php echo $value['date'];?>'/> 
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <input type="submit" value="Upload Image" name="submit">
-                    </form>         
+                    </form>   
+                    <?php endif; ?>     
                 </td>
             </tr> 
             

@@ -41,18 +41,21 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    //echo "Sorry, your file was not uploaded.";
+if ($uploadOk != 0) {
+    echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-    $valTo = strval ($fileToUpdate );
+    $valTo = strval ($fileToUpdate);
+    var_dump($valTo);
     //var_dump($valTo);
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        //echo "The file ". $fileToUpdate. " has been uploaded.";
-        $sql="UPDATE attendance SET proof='".$valTo."'  WHERE id_user=$idUser and date='".$fechaActual."'";
+        //echo "The file ". var_dump($fileToUpdate). " has been uploaded.";
+        $sql="UPDATE attendance SET proof='".$valTo."'WHERE id_user=$idUser and date='".$fechaActual."'";
         $result = mysqli_query($con,$sql);
         print_r($sql);
-      //  echo "Gracias por subir tu justificiante en breve validaremos tu formulario";
+        $direction = "./views/viewUserProfile.php";
+        header('Location: '.$direction);
+        //echo "Gracias por subir tu justificiante en breve validaremos tu formulario";
 
     } else {
       //  echo "Sorry, there was an error uploading your file.";
