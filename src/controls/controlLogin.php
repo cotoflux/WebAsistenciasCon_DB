@@ -32,7 +32,9 @@ function devuelveInfoPersonal($con, $student, $student_pass)
     $redirectUrl = '../views/viewUserProfile.php';
     if($idRol==2)
     {
-        $redirectUrl = 'controlAdmin.php';
+        $redirectUrl = '../views/viewAdmin.php';
+        //$redirectUrl = 'controlAdmin.php';
+        header("Location: $redirectUrl");   
     }
     
   

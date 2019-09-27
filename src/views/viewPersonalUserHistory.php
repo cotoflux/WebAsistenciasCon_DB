@@ -37,14 +37,25 @@ session_start();
             <th>Justificar</td>
            </tr>
            <?php 
-           foreach ($_SESSION["historial"] as $value) {
-            echo "<tr>";
-            echo "<td>".$value['name']."</td>";
-            echo "<td>".$value['date']."</td>";
-            echo "<td>".$value['time']."</td>";   
-            echo "<td><input type='file' name='myFile'></td>";            
-            echo "</tr>";
-           }
+           foreach ($_SESSION["historial"] as $value): 
+            ?>
+            <tr>
+            <td><?php echo $value['name'] ?></td>
+            <td><?php echo $value['date'] ?></td>
+            <td><?php echo $value['time'] ?></td>   
+                <td>
+                    <form action="../upload.php" method="post" enctype="multipart/form-data">
+                    Justifica tu falta:
+                    <input type='hidden' name='date' value='<?php echo $value['date'];?>'/> 
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+                    </form>         
+                </td>
+            </tr> 
+            
+            <?php
+           endforeach;
+           
         //    while ($fila = mysqli_fetch_array($result)) {
         //     echo "<td>".$fila['id']."</td>";
         // }

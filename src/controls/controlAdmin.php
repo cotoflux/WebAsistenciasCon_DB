@@ -1,12 +1,13 @@
 <?php
-    include_once "../models/Connect.php";
-    session_start();
+    include "../models/Connect.php";
     $conexion = new Connect();
     $con = $conexion->connectBD();
 
-    {
+    getAllCodersFichar($con);
+    getAllCodersFF($con);
+    function getAllCodersFichar($con){
         
-        $sql = "SELECT u.id, u.name,u.id_rol, a.date, a.time FROM users u join attendance a on(u.id = a.id_user) WHERE u.id_rol=1 AND a.date=CURDATE()";
+        $sql = "SELECT u.id, u.name,u.id_rol, a.date, a.time FROM users u join attendance a on(u.id = a.id_user) WHERE id_rol=1 AND date=CURDATE()";
         $lista=mysqli_query($con,$sql);
          //var_dump($lista);
         $historialHoy = [];
@@ -17,12 +18,18 @@
             array_push($historialHoy, $fila);
         }
         
-        $_SESSION['historialDeHoy'] = $historialHoy;
-
-
-
+       $_SESSION['historialDeHoy'] = $historialHoy;
         
-        $sql2 = "SELECT name, last_name, total_faltas, total_retrasos FROM users WHERE`id_rol`=1 and total_retrasos IS NOT NULL AND total_faltas is NOT NULL ";
+        //$_SESSION['historialTotalesUsuarios'] = $historialTotalesUsuarios;
+        //var_dump($_SESSION['historialTotalesUsuarios']);
+     
+        
+
+    //header("Location: ../views/viewAdmin.php"); 
+        
+    }//($con);
+    function getAllCodersFF($con){
+        $sql2 = "SELECT name, last_name, total_faltas, total_retrasos FROM users WHERE id_rol =1 and total_retrasos IS NOT NULL AND total_faltas is NOT NULL";
         $lista2=mysqli_query($con,$sql2);
         //var_dump($lista2);
 
@@ -34,14 +41,7 @@
             array_push($historialTotalesUsuarios, $fila2);
             //var_dump($fila2);
         }
-        
-        $_SESSION['historialTotalesUsuarios'] = $historialTotalesUsuarios;
-        var_dump($_SESSION['historialTotalesUsuarios']);
-     
-        
 
-    //header("Location: ../views/viewAdmin.php"); 
-        
-    }($con);
-
+        $_SESSION['historialTotalesUsuarios']=$historialTotalesUsuarios;
+    }
 ?>

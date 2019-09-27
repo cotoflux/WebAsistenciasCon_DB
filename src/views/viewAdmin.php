@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "../controls/controlAdmin.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,13 +48,15 @@
             <th>Hora</td>
            </tr>
            <?php 
-           foreach ($_SESSION["historialDeHoy"] as $value) {
+           
+         foreach ($_SESSION['historialDeHoy'] as $value) {
+              //var_dump($_SESSION["historialDeHoy"]);
             echo "<tr>";
             echo "<td>".$value['name']."</td>";
             echo "<td>".$value['date']."</td>";
             echo "<td>".$value['time']."</td>";           
             echo "</tr>";
-           }
+           } 
         //    while ($fila = mysqli_fetch_array($result)) {
         //     echo "<td>".$fila['id']."</td>";
         // }
@@ -72,7 +75,7 @@
             <th>Total Retrasos</th>
            </tr>
            <?php 
-           foreach ($_SESSION["historialTotalesUsuarios"] as $value2) {
+           foreach ($_SESSION['historialTotalesUsuarios'] as $value2) {
             echo "<tr>";
             echo "<td>".$value2['name']."</td>";
             echo "<td>".$value2['last_name']."</td>";
