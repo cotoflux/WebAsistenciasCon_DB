@@ -66,6 +66,10 @@
 
 
     </div>
+
+
+
+
     <div id="totalretrasos" class="tab-pane fade">
       <h3>Listado Retrasos totales</h3>
       <table border=1>
@@ -91,30 +95,68 @@
        </table>
   </div>
 
-  </div>
     <div id="justificantes" class="tab-pane fade">
-      <h3>Listado de justificantes</h3>
-      <table border=1>
-           <tr>
-            <th>Nombre</td>
-            <th>Apellido</td> 
-            <th>Total Faltas</td>
-            <th>Total Retrasos</th>
-           </tr>
-           <?php 
-           foreach ($_SESSION['historialJustificantesUsuarios'] as $value3) {
-            echo "<tr>";
-            echo "<td>".$value3['name']."</td>";
-            echo "<td>".$value3['last_name']."</td>";
-            echo "<td>".$value3['total_faltas']."</td>";        
-            echo "<td>".$value3['total_retrasos']."</td>";    
-            echo "</tr>";
-           }
-        //    while ($fila = mysqli_fetch_array($result)) {
-        //     echo "<td>".$fila['id']."</td>";
-        // }
-    ?>
-       </table>     
+      <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#justificantes_sin_validar">Listado de Today</a></li>
+        <li><a data-toggle="pill" href="#justificantes_validados">Listado Retrasos Totales</a></li>
+      </ul>
+  
+      <div class="tab-content">
+          <div id="justificantes_sin_validar" class="tab-pane fade">
+            
+                    <h3>Listado de justificantes pendientes de validar</h3>
+                    <table border=1>
+                    <tr>
+                      <th>Nombre</td>
+                      <th>Apellido</td> 
+                      <th>Justificante</td>
+                      <th>Validación justificantel</th>
+                      <th>Fecha</th>
+                    </tr>
+                    <?php 
+                    foreach ($_SESSION['historialJustificantesUsuarios'] as $value3) {
+                      echo "<tr>";
+                      echo "<td>".$value3['name']."</td>";
+                      echo "<td>".$value3['last_name']."</td>";
+                      echo "<td>".$value3['proof']."</td>";        
+                      echo "<td>".$value3['validated_proof']."</td>";    
+                      echo "<td>".$value3['date']."</td>"; 
+                      echo "</tr>";
+                    }
+                  //    while ($fila = mysqli_fetch_array($result)) {
+                  //     echo "<td>".$fila['id']."</td>";
+                  // }
+              ?>
+                </table>  
+          </div>
+          <div id="justificantes_validados" class="tab-pane fade">
+          <h3>Listado de justificantes Validados</h3>
+                    <table border=1>
+                    <tr>
+                      <th>Nombre</td>
+                      <th>Apellido</td> 
+                      <th>Justificante</td>
+                      <th>Validación justificantel</th>
+                      <th>Fecha</th>
+                    </tr>
+                    <?php 
+                    foreach ($_SESSION['historialJustificantesUsuarios'] as $value3) {
+                      echo "<tr>";
+                      echo "<td>".$value3['name']."</td>";
+                      echo "<td>".$value3['last_name']."</td>";
+                      echo "<td>".$value3['proof']."</td>";        
+                      echo "<td>".$value3['validated_proof']."</td>";    
+                      echo "<td>".$value3['date']."</td>"; 
+                      echo "</tr>";
+                    }
+                  //    while ($fila = mysqli_fetch_array($result)) {
+                  //     echo "<td>".$fila['id']."</td>";
+                  // }
+              ?>
+                </table>  
+          </div>
+      </div>
+   
   </div>
 </div>
 

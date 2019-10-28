@@ -43,7 +43,7 @@ session_start();
             <td><?php echo $value['name'] ?></td>
             <td><?php echo $value['date'] ?></td>
             <td><?php echo $value['time'] ?></td>   
-                <td>
+                <td style="text-align:center;">
                     <?php if (!isset($value['proof'])): ?>
                     <form action="../upload.php" method="post" enctype="multipart/form-data">
                     Justifica tu falta:
@@ -51,6 +51,8 @@ session_start();
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <input type="submit" value="Upload Image" name="submit">
                     </form>   
+                    <?php else: ?> 
+                    <span>Ya entregaste el justificante</span>  
                     <?php endif; ?>     
                 </td>
             </tr> 
