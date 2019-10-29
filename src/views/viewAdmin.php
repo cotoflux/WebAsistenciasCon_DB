@@ -140,7 +140,7 @@
                       <th>Fecha</th>
                     </tr>
                     <?php 
-                    foreach ($_SESSION['historialJustificantesUsuarios'] as $value3) {
+                    foreach ($_SESSION['historialJustificantesValidadoUsuarios'] as $value3) {
                       echo "<tr>";
                       echo "<td>".$value3['name']."</td>";
                       echo "<td>".$value3['last_name']."</td>";
