@@ -21,7 +21,7 @@ session_start();
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="">Contacto</a></li>
+                <li><a href="datosContacto.php">Contacto</a></li>
                 <li><a href="">Idioma</a></li>
                 <li><a href="">Seguridad</a></li>
                 <li><a href="">FAQ</a></li>

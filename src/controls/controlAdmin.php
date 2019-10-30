@@ -64,17 +64,40 @@
         $_SESSION['historialJustificantesUsuarios']=$historialJustificantesUsuarios;
     }
     
-    function justificantesValidado($con){
-        $sql3 = "SELECT * FROM `attendance` WHERE `proof` is not null and validated_proof= true";
+    function justificantesSinValidado($con){
+        $sql3 = " SELECT u.name,u.username,u.last_name,u.id_rol,a.id_user,a.proof,a.validated_proof, a.date
+        FROM users u join attendance a 
+        on(u.id = a.id_user)
+        WHERE u.id_rol=1";
         $lista3=mysqli_query($con,$sql3);
-        //var_dump($lista2);
+ 
 
-        $historialJustificantesUsuarios = [];
+        $historialJustificantesUsuariosUplodaded = [];
         if (!$lista3){
             echo "no se ejecuta";
         }
         while ($fila3 = mysqli_fetch_array($lista3)) {
-            array_push($historialJustificantesUsuarios, $fila3);
+            array_push($historialJustificantesUsuariosUploaded, $fila3);
+            //var_dump($fila2);
+        }
+
+        $_SESSION['historialJustificantesSinValidadoUsuarios']=$historialJustificantesUsuariosUploaded;
+    }
+
+    function justificantesValidado($con){
+        $sql4 = "SELECT u.name,u.username,u.last_name,u.id_rol,a.id_user,a.proof,a.validated_proof, a.date
+        FROM users u join attendance a 
+        on(u.id = a.id_user)
+        WHERE u.id_rol=1";
+        $lista4=mysqli_query($con,$sql4);
+        //SELECT u.name,u.username,u.last_name,a.id_user,a.proof,a.validated_proof FROM users u join attendance a on(u.id = a.id_user)
+
+        $historialJustificantesUsuarios = [];
+        if (!$lista4){
+            echo "no se ejecuta";
+        }
+        while ($fila4 = mysqli_fetch_array($lista4)) {
+            array_push($historialJustificantesUsuarios, $fila4);
             //var_dump($fila2);
         }
 

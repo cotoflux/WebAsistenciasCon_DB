@@ -140,13 +140,13 @@
                       <th>Fecha</th>
                     </tr>
                     <?php 
-                    foreach ($_SESSION['historialJustificantesValidadoUsuarios'] as $value3) {
+                    foreach ($_SESSION['historialJustificantesValidadoUsuarios'] as $value4) {
                       echo "<tr>";
-                      echo "<td>".$value3['name']."</td>";
-                      echo "<td>".$value3['last_name']."</td>";
-                      echo "<td>".$value3['proof']."</td>";        
-                      echo "<td>".$value3['validated_proof']."</td>";    
-                      echo "<td>".$value3['date']."</td>"; 
+                      echo "<td>".$value4['name']."</td>";
+                      echo "<td>".$value4['last_name']."</td>";
+                      echo "<td><iframe src='../uploads/".$value4['proof']."'></iframe></td>";        
+                      echo "<td>".$value4['validated_proof']."</td>";    
+                      echo "<td>".$value4['date']."</td>"; 
                       echo "</tr>";
                     }
                   //    while ($fila = mysqli_fetch_array($result)) {
