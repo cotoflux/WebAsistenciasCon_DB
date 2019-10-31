@@ -22,9 +22,6 @@ session_start();
         <nav class="navbar">
             <ul>
                 <li><a href="datosContacto.php">Contacto</a></li>
-                <li><a href="">Idioma</a></li>
-                <li><a href="">Seguridad</a></li>
-                <li><a href="">FAQ</a></li>
             </ul>
         </nav>
     </header>

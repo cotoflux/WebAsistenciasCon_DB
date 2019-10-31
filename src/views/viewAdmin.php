@@ -23,10 +23,7 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="">Contacto</a></li>
-                <li><a href="">Idioma</a></li>
-                <li><a href="">Seguridad</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="datosContacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -34,14 +31,14 @@
         
     <div class="container">
   <ul class="nav nav-pills">
-    <li class="active"><a data-toggle="pill" href="#menu1">Listado de Today</a></li>
-    <li><a data-toggle="pill" href="#totalretrasos">Listado Retrasos Totales</a></li>
-    <li><a data-toggle="pill" href="#justificantes">Listado Justificantes</a></li>
+    <li class="active"><a data-toggle="pill" href="#menu1">Coders que han Fichado Hoy</a></li>
+    <li><a data-toggle="pill" href="#totalretrasos">Estado de Retrasos Totales por Coder</a></li>
+    <li><a data-toggle="pill" href="#justificantes">Estado de los Justificantes</a></li>
   </ul>
   
   <div class="tab-content">
     <div id="menu1" class="tab-pane fade active in">
-      <h3>Listado de Today</h3>
+      <h3>Listado Coders/Hora Fichaje</h3>
       <table border=1>
            <tr>
             <th>Nombre</td>
@@ -71,7 +68,7 @@
 
 
     <div id="totalretrasos" class="tab-pane fade">
-      <h3>Listado Retrasos totales</h3>
+      <h3>Listado Total de Faltas/Retrasos</h3>
       <table border=1>
            <tr>
             <th>Nombre</td>
@@ -97,7 +94,7 @@
 
     <div id="justificantes" class="tab-pane fade">
       <ul class="nav nav-pills">
-        <li class="active"><a data-toggle="pill" href="#justificantes_sin_validar">Listado de Today</a></li>
+        <li class="active"><a data-toggle="pill" href="#justificantes_sin_validar">Listado para Validar/Desvalidar Justificantes</a></li>
         <li><a data-toggle="pill" href="#justificantes_validados">Listado Retrasos Totales</a></li>
       </ul>
   
@@ -110,16 +107,23 @@
                       <th>Nombre</td>
                       <th>Apellido</td> 
                       <th>Justificante</td>
-                      <th>Validación justificantel</th>
+                      <th>Validación justificante</th>
                       <th>Fecha</th>
                     </tr>
                     <?php 
-                    foreach ($_SESSION['historialJustificantesUsuarios'] as $value3) {
+                    foreach ($_SESSION['historialJustificantesValidadoUsuarios'] as $index => $value3) {
                       echo "<tr>";
                       echo "<td>".$value3['name']."</td>";
                       echo "<td>".$value3['last_name']."</td>";
-                      echo "<td>".$value3['proof']."</td>";        
-                      echo "<td>".$value3['validated_proof']."</td>";    
+                      echo "<td>".$value3['proof']."</td>";    
+                      if(!$value3['validated_proof']){
+                          echo "<td>
+<a href='../controls/actualizaValidacionJustificantes.php?user_id=".$value3['id_user']."&validation=1&date=".$value3['date']."'>validar</a></td>";
+                      }
+                      else{                        
+                        echo "<td>
+                        <a href='../controls/actualizaValidacionJustificantes.php?user_id=".$value3['id_user']."&validation=0&date=".$value3['date']."'>desvaidar</a></td>";
+                      } 
                       echo "<td>".$value3['date']."</td>"; 
                       echo "</tr>";
                     }
@@ -130,7 +134,7 @@
                 </table>  
           </div>
           <div id="justificantes_validados" class="tab-pane fade">
-          <h3>Listado de justificantes Validados</h3>
+          <h3>Vista de Justificantes y Control de Validación</h3>
                     <table border=1>
                     <tr>
                       <th>Nombre</td>
